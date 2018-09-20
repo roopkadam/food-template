@@ -1,0 +1,210 @@
+{% extends "layouts/default.html" %}
+
+{% block content %}
+  <div class="owl-carousel owl-theme owl-loaded" id="owl-slider-caurosal-1">
+			<div class="owl-stage-outer">
+				<div class="owl-stage">
+					{% for caurosel_info in entry.main_carousel.carousel_content%}
+					<div class="owl-item owl-margin-right">
+						<div class="single-hero-post first-div" style="background-image:url({{getAssetUrl(caurosel_info.image)}});">
+							<div class="hero-slide-contain">
+								<p>{{caurosel_info.date}}</p>
+								<a href="#">
+									<h4>{{caurosel_info.description}}</h4>
+								</a>
+							</div>
+						</div>
+					</div>
+					{%endfor%}
+				</div>
+			</div>
+		</div>
+
+		<section class="text-center">
+				<div class="container">
+					<div class="row slides-container">
+						<div class="col-7" style="padding-right: 0px;padding-left:0px;">
+							<div class="slider-for">
+								{% for second_carousel_info in entry.second_carousel.carousel_content %}
+								<div class="single-hero-post" style="background-image:url({{getAssetUrl(second_carousel_info.image)}})";></div>
+								{%endfor%}
+							</div>
+						</div>
+						<div class="col-5 test1" style="padding-left: 0px;padding-right: 0px !important;">
+							<div class="slider-nav nav-link test">
+									{% for second_carousel_info in entry.second_carousel.carousel_content %}
+								<div class="slider-content">
+									<h2>{{second_carousel_info.number}}</h2>
+									<h5>{{second_carousel_info.description}}</h5>
+								</div>
+								{%endfor%}
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<div class="container filter-post">
+				
+				<h4>Filter Post</h4>
+				<img class="border-image" src="./static/images/borders/post-curve-line.png"alt="Smiley face">
+				<ul class="filter-popular-tags">
+						{% for tags_information in entry.side_post.tages.tag_details%}
+						<li>{{tags_information.names}}</li>
+						{%endfor%}
+					</ul>
+					<img class="border-image" src="./static/images/borders/post-curve-line.png"alt="Smiley face">
+			</div>
+
+	
+
+			  <!-- Blog post area -->
+				<div class="container">
+						<div class="second-blog-post">
+							<div class="row">
+								<div class="col-lg-8" style="padding-left: 0px;">
+									{% for blog_information in entry.blog_post.blog_content%}
+									<div class="single-blog-post  ">
+										<div class="post-thumbnail mb-50">
+											<img src="{{getAssetUrl(blog_information.thumbnail_image)}}" alt="blog-post 1" class="blog-image">
+										</div>
+										<div class="post-content width-50per">
+											<p class="post-date">{{blog_information.date}}</p>
+											<h4 class="post-title">{{blog_information.blog_title}}
+											</h4>
+											<div class="post-meta">
+												<span>{{blog_information.by}}</span>
+												<em>{{blog_information.name}}</em>
+												<i class="fa fa-eye eye"></i>
+												<em>{{blog_information.year}}</em>
+												<i class="fa fa-comments comments"></i>
+												<em>{{blog_information.number}}</em>
+											</div>
+											<p class="post-excerpt">{{blog_information.blog_description}}</p>
+											<p class="read-more">{{blog_information.continue_link}}
+												<i class="fa fa-long-arrow-right right-arrow"></i>
+											</p>
+										</div>
+								</div>
+								<img class="border-image" src="{{getAssetUrl(blog_information.border_image)}}"alt="Smiley face">		
+								{%endfor%}						
+								</div>
+
+
+								<div class="col-lg-4">
+										<div class="single-widget-area text-align">
+												<div class="widget-title">
+													<h6 class="text-about-Me">{{entry.side_post.about_me.title}}</h6>
+												</div>
+												<div class="widget-image-aboutMe">
+													<img class="about-me-img" src="{{getAssetUrl(entry.side_post.about_me.thumbnail)}}" alt="widget Image">
+												</div>
+												<div class="widget-aboutMe-content">
+													<img class="signature-img" src="{{getAssetUrl(entry.side_post.about_me.signature_image)}}" alt="signature Image">
+													<p>{{entry.side_post.about_me.description}}</p>
+												</div>
+										</div>
+										<div class="single-widget-area text-align">
+											<div class="widget-title-subscribe">
+												<h6 class="text-Subscribe">{{entry.side_post.subscribe.title}}</h6>
+											</div>
+										</div>
+										<div class="col social-logo-subscribe">
+											<i class="fa fa-facebook padding" aria-hidden="true"></i>
+											<i class="fa fa-twitter padding" aria-hidden="true"></i>
+											<i class="fa fa-instagram padding" aria-hidden="true"></i>
+											<i class="fa fa-pinterest padding" aria-hidden="true"></i>
+											<i class="fa fa-rss padding" aria-hidden="true"></i>
+										</div>
+										<div class="single-widget-area text-align">
+											<div class="widget-title-latest">
+												<h6 class="text-Subscribe">{{entry.side_post.latest_posts.title}}</h6>
+											</div>
+										</div>
+										<!-- using media objects -->
+										{% for side_contents in entry.side_post.latest_posts.media_objects%}
+										<div class="media post-thumb">
+											<img class="align-self-start mr-3 thumb-img" src="{{getAssetUrl(side_contents.thumbnail)}}" alt="biscuit image">
+											<div class="media-body min-width">
+												<h6>{{side_contents.title}}</h6>
+												<span>{{side_contents.by}}</span>
+												<em>{{side_contents.name}}</em>
+											</div>
+										</div>
+										{%endfor%}
+
+										<div class="single-latest-post">
+											<img src="{{getAssetUrl(entry.side_post.book_section.image)}}" alt="Smiley face">
+										</div>
+
+										<div class="single-widget-area text-align">
+											<div class="widget-title-latest">
+												<h6 class="text-Subscribe">{{entry.side_post.subscription_section.title}}</h6>
+											</div>
+											<div class="newsletter-content">
+												<p>{{entry.side_post.subscription_section.description}}</p>
+												<form>
+													<div class="form-group mt-2 mb-2">
+														<div class="input-group">
+														<input type="password" class="form-control form-email" id="inputPassword2" placeholder="Your email">
+														<button type="submit" class="btn form-btn">
+															<i class="fa fa-send-o"></i>
+														</button>
+													</div>
+													</div>
+												</form>
+											</div>
+										</div>
+
+										<div class="single-widget-area text-align">
+											<div class="widget-title-latest">
+												<h6 class="text-Subscribe">{{entry.side_post.tages.title}}</h6>
+											</div>
+											<ul class="popular-tags">
+												{% for tags_information in entry.side_post.tages.tag_details%}
+												<li>{{tags_information.names}}</li>
+												{%endfor%}
+											</ul>
+										</div>
+								</div>
+								<!-- pager block section -->
+								<div class="pager">
+										<span>
+											<i class="fa fa-long-arrow-left">{{entry.pagination_links.first}}</i>
+										</span>
+										<span style="float:right;">{{entry.pagination_links.second}}
+											<i class="fa fa-long-arrow-right"></i>
+										</span>
+								</div>
+							</div>
+						</div>
+					</div>
+						<!-- Container div closing-->
+						<div class="container">
+								<div class="row">
+									<div class="col-12">
+										<div class="follow-us">
+											<h2>{{entry.footer_caurosal.title}}</h2>
+											<span>{{entry.footer_caurosal.email_address}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<div class="owl-carousel owl-theme " id="owl-carousel-slider">
+											{% for carousal_content in entry.footer_caurosal.caurosal_content%}
+											<div class="item">
+												<div class="first-carousel-slide slide-animation">
+													<img src="{{getAssetUrl(carousal_content.thumbnail)}}" alt="back-img">
+													<i class="fa fa-instagram folow-me">
+														<span>{{carousal_content.link_follow}}</span>
+													</i>
+												</div>
+											</div>
+											{%endfor%}
+										</div>
+									</div>
+								</div>
+							</div>
+{% endblock %}
+

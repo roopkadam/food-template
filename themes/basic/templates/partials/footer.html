@@ -1,0 +1,25 @@
+{# If you have a "Content Type" for footer in Built.io Contentstack then use get() view helper to retrieve footer entry.
+#} {# e.g. set footer = get("footer_content_type_id") #} {# And then render footer values using the {{footer.field_name}}
+#} {%- set footer = get('footer') -%}
+<footer class="footer-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<img class="border-img" src="{{getAssetUrl(footer.border_image)}}" alt="footer border">
+				<div class="footer-social-icon">
+					{% for content in footer.social_media.icons%}
+					<i class="{{content .icon_class}}">
+						<span>{{content .name}}</span>
+					</i>
+					{%endfor%}
+				</div>
+				<img class="border-img" src="{{getAssetUrl(footer.border_image)}}" alt="footer border">
+			</div>
+		</div>
+
+		<div class="copyright-text">
+			<p>{{footer.social_media.copyright}}
+				<i class="fa fa-heart-o" aria-hidden="true"></i>{{footer.social_media.company_name}}</p>
+		</div>
+	</div>
+</footer>
